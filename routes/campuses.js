@@ -48,9 +48,23 @@ router.delete('/:id', ash(async(req, res) => {
 }));
 
 /* ADD NEW CAMPUS */
-router.post('/', ash(async(req, res) => {
-  let newCampus = await Campus.create(req.body);
-  res.status(200).json(newCampus);  // Status code 200 OK - request succeeded
+router.post('/', ash(async(req, res, next) => {
+  // let newCampus = await Campus.create(req.body);
+  // res.status(200).json(newCampus);  // Status code 200 OK - request succeeded
+
+  //add campus implementation
+  try{
+    //create new campus using the request body data
+    const createdCampus = await Campus.create(req.body);
+    console.log("Campus successfully created: ",createdCampus);
+
+    //respond with the created campus and status code
+    res.status(201).json(createdCampus);
+  } catch(err){
+    console.error("Error creating campus:",err.message);
+    next(err); 
+  }
+
 }));
 
 /* EDIT CAMPUS */
