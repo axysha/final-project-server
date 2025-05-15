@@ -3,8 +3,10 @@
 
 It defines the student model for the database.
 ==================================================*/
-const Sequelize = require('sequelize');  // Import Sequelize
-const db = require('../db');  // Import Sequelize database instance called "db"
+const Sequelize = require('sequelize');
+const db        = require('../db');
+
+const Campus    = require('./Campus');
 
 const Campus    = require('./Campus');
 
@@ -13,20 +15,17 @@ const Student = db.define("student", {
     type: Sequelize.STRING,
     allowNull: false
   },
-
   lastname: {
     type: Sequelize.STRING,
     allowNull: false
   },
-
   email: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      isEmail: true,
-    },
+      isEmail: true
+    }
   },
-
   imageUrl: {
     type: Sequelize.STRING,
     allowNull: true,
@@ -38,8 +37,8 @@ const Student = db.define("student", {
     validate: {
       min: 0.0,
       max: 4.0
-    },
-  },
+    }
+  }
 });
 
 Student.belongsTo(Campus, {
