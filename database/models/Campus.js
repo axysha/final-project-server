@@ -3,8 +3,8 @@
 
 It defines the campus model for the database.
 ==================================================*/
-const Sequelize = require('sequelize');  // Import Sequelize
-const db = require('../db');  // Import Sequelize database instance called "db"
+const Sequelize = require('sequelize');
+const db = require('../db');
 
 // Define the campus model
 const Campus = db.define("campus", {
@@ -19,15 +19,14 @@ const Campus = db.define("campus", {
   },
 
   description: {
-    type: Sequelize.TEXT,
+    type: Sequelize.TEXT
   },
 
   imageUrl: {
     type: Sequelize.STRING,
     allowNull: true,
-    defaultValue: 'https://via.placeholder.com/200',
-  },
+    defaultValue: 'https://s29068.pcdn.co/wp-content/uploads/campus-shot-768x432.jpg.optimal.jpg'
+  }
 });
 
-// Export the campus model
 module.exports = Campus;
