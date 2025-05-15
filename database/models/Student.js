@@ -15,7 +15,35 @@ const Student = db.define("student", {
   lastname: {
     type: Sequelize.STRING,
     allowNull: false
-  }
+  },
+
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true,
+    },
+  },
+
+  imageUrl: {
+    type: Sequelize.STRING,
+    allowNull: true,
+    defaultValue: '/student.png'
+  },
+  gpa: {
+    type: Sequelize.DECIMAL(2, 1),
+    allowNull: true,
+    validate: {
+      min: 0.0,
+      max: 4.0
+    },
+  },
+});
+
+Student.belongsTo(Campus, {
+  foreignKey: 'campusId',
+  onDelete: 'SET NULL',
+  onUpdate: 'CASCADE'
 });
 
 // Export the student model
