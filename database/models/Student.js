@@ -6,6 +6,8 @@ It defines the student model for the database.
 const Sequelize = require('sequelize');  // Import Sequelize
 const db = require('../db');  // Import Sequelize database instance called "db"
 
+const Campus    = require('./Campus');
+
 const Student = db.define("student", {
   firstname: {
     type: Sequelize.STRING,
