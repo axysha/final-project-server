@@ -3,8 +3,8 @@
 
 It defines the campus model for the database.
 ==================================================*/
-const Sequelize = require('sequelize');
-const db = require('../db');
+const Sequelize = require('sequelize');       // Import Sequelize
+const db        = require('../db');           // Import Sequelize database instance called "db"
 
 // Define the campus model
 const Campus = db.define("campus", {
@@ -30,3 +30,4 @@ const Campus = db.define("campus", {
 });
 
 module.exports = Campus;
+
